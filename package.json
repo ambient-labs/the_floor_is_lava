@@ -1,0 +1,34 @@
+{
+  "private": true,
+  "type": "module",
+  "name": "root",
+  "description": "This is the root package.json for the the_floor_is_lava",
+  "author": "Ambient Labs",
+  "license": "MIT",
+  "homepage": "https://github.com/ambient-labs/the_floor_is_lava",
+  "scripts": {
+    "postinstall": "pnpm exec playwright install && node node_modules/puppeteer/install.mjs",
+    "test": "wireit"
+  },
+  "wireit": {
+    "test": {
+      "command": "vitest --config ./vitest.config.ts",
+      "dependencies": [
+        "./packages/the_floor_is_lava:build"
+      ]
+    }
+  },
+  "dependencies": {
+    "fs-extra": "^11.2.0",
+    "rimraf": "^5.0.5",
+    "the_floor_is_lava": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "playwright": "^1.43.0",
+    "puppeteer": "^22.6.2",
+    "selenium-webdriver": "^4.19.0",
+    "vitest": "^1.4.0",
+    "wireit": "^0.14.4"
+  }
+}
