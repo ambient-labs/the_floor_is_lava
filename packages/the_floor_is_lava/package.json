@@ -2,7 +2,7 @@
   "name": "@ambient-labs/the_floor_is_lava",
   "type": "module",
   "description": "Tools for performing integration tests across a variety of environments for Javascript libraries.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Ambient Labs",
   "bin": {
     "the_floor_is_lava": "./dist/bin/cli.js"
