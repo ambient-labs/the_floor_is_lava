@@ -8,7 +8,7 @@ on:
       - 'packages/the_floor_is_lava/**/*.ts'
       - 'packages/the_floor_is_lava/README.md'
       - 'packages/the_floor_is_lava/**/*.ejs'
-      - '!packages/the_floor_is_lava/javascript/**/*.test.ts'
+      - '!packages/the_floor_is_lava/**/*.test.ts'
 
 jobs:
   version:

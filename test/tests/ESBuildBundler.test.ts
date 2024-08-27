@@ -9,7 +9,7 @@ import {
   output,
   HttpServer,
   ServersideTestRunner,
-} from 'the_floor_is_lava';
+} from '@ambient-labs/the_floor_is_lava';
 import { makeTmpDir } from '../../packages/the_floor_is_lava/src/common/tmp-dir.js';
 import path from 'path';
 import { existsSync, mkdir, readFile, } from 'fs-extra';

@@ -21,7 +21,7 @@
   "dependencies": {
     "fs-extra": "^11.2.0",
     "rimraf": "^5.0.5",
-    "the_floor_is_lava": "workspace:*"
+    "@ambient-labs/the_floor_is_lava": "workspace:*"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",

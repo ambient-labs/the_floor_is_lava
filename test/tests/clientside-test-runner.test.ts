@@ -3,12 +3,12 @@ import {
   SupportedDriver,
   Launch,
   getDriver,
-} from "the_floor_is_lava";
+} from "@ambient-labs/the_floor_is_lava";
 import webdriver from 'selenium-webdriver';
 import { describe, test, expect, } from "vitest";
 import puppeteer from "puppeteer";
 import { chromium, webkit, firefox, } from "playwright";
-import { getBrowserOptions } from "the_floor_is_lava";
+// import { getBrowserOptions } from "@ambient-labs/the_floor_is_lava";
 
 // getDriver(getBrowserOptions()[0], {
 //   username: 'username',

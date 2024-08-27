@@ -44,7 +44,7 @@ jobs:
         working-directory: ./packages/the_floor_is_lava
         run: pnpm build
 
-      - run: pnpm publish --no-git-checks
+      - run: pnpm publish --no-git-checks --access public
         working-directory: ./packages/the_floor_is_lava
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

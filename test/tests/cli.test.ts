@@ -20,6 +20,6 @@ describe('cli', () => {
 
   test('bundle --help works', async () => {
     const { stdout: result } = await exec('pnpm the_floor_is_lava bundle --help');
-    expect(result.trim()).toEqual(expect.stringContaining('Usage: the_floor_is_lava bundle [options]'));
+    expect(result.trim()).toEqual(expect.stringContaining('Usage: @ambient-labs/the_floor_is_lava bundle [options]'));
   });
 });

@@ -11,8 +11,8 @@ import {
   ServersideTestRunner,
   WebpackBundler,
   writeFile,
-} from 'the_floor_is_lava';
-import { makeTmpDir } from '../../packages/the_floor_is_lava/src/common/tmp-dir.js';
+  makeTmpDir,
+} from '@ambient-labs/the_floor_is_lava';
 import path from 'path';
 import { existsSync, mkdir, readFile, } from 'fs-extra';
 import { Browser, chromium } from 'playwright'

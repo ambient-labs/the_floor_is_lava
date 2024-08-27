@@ -3,15 +3,64 @@ name: Cut release from new tag
 on:
   push:
     tags:
-      - "v*"
+      - 'v*'
 
 jobs:
   tagged-release:
-    name: "Tagged Release"
-    runs-on: "ubuntu-latest"
+    name: 'Tagged Release'
+    runs-on: 'ubuntu-latest'
 
     steps:
+      - name: 'Checkout repository'
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+
+      - uses: pnpm/action-setup@v3
+        name: Install pnpm
+        with:
+          version: 8
+          run_install: false
+
+      - name: Get pnpm store directory
+
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v4
+        name: Setup pnpm cache
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        working-directory: './packages/the_floor_is_lava'
+        run: pnpm install
+
+      - name: 'Build'
+        working-directory: './packages/the_floor_is_lava'
+        run: 'pnpm build'
+
+      - name: 'Check build output'
+        working-directory: './packages/the_floor_is_lava'
+        run: 'pnpm build:check'
+
+      - name: 'Pack'
+        working-directory: './packages/the_floor_is_lava'
+        run: 'pnpm pack'
+
       - name: Release
         uses: softprops/action-gh-release@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
+          fail_on_unmatched_files: true
           generate_release_notes: true
+          files: |
+            packages/the_floor_is_lava/ambient-labs-the_floor_is_lava-*.tgz
